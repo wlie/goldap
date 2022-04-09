@@ -11,12 +11,24 @@ func (request *BindRequest) Name() LDAPDN {
 	return request.name
 }
 
+func (request *BindRequest) SetName(name LDAPDN) {
+	request.name = name
+}
+
 func (request *BindRequest) Authentication() AuthenticationChoice {
 	return request.authentication
 }
 
 func (request *BindRequest) AuthenticationSimple() OCTETSTRING {
 	return request.Authentication().(OCTETSTRING)
+}
+
+func (request *BindRequest) SetAuthenticationSimple(pass OCTETSTRING) {
+	request.authentication = pass
+}
+
+func (request *BindRequest) SetVersion(version INTEGER) {
+	request.version = version
 }
 
 func (request *BindRequest) AuthenticationChoice() string {
